@@ -72,14 +72,13 @@
       letter-spacing: 0.3px;
     }
 
-    .logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--blue), #005fcc);
-      display: grid;
-      place-items: center;
-      font-size: 1.5rem;
+    .logo-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: rgba(35, 136, 255, 0.10);
       box-shadow: 0 0 30px rgba(35, 136, 255, 0.35);
     }
 
@@ -178,6 +177,15 @@
       font-size: 0.95rem;
     }
 
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px auto;
+      justify-content: center;
+      text-align: center;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -193,6 +201,15 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
     }
 
+    .features-grid .card {
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
     .card h3 {
       font-size: 1.25rem;
       margin-bottom: 10px;
@@ -201,6 +218,11 @@
     .card p {
       color: var(--muted);
       font-size: 0.98rem;
+    }
+
+    .features-grid .card p {
+      max-width: 310px;
+      margin: 0 auto;
     }
 
     .section {
@@ -219,7 +241,7 @@
 
     .section-title p {
       color: var(--muted);
-      max-width: 700px;
+      max-width: 760px;
       margin: auto;
     }
 
@@ -295,6 +317,43 @@
       margin-top: 20px;
     }
 
+    .use-section {
+      background:
+        radial-gradient(circle at top, rgba(35, 136, 255, 0.18), transparent 35%),
+        linear-gradient(180deg, rgba(16, 31, 54, 0.60), rgba(7, 17, 31, 0.10));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .screenshot-card {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.055);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      transition: 0.2s;
+    }
+
+    .screenshot-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(76, 163, 255, 0.45);
+      box-shadow: 0 25px 70px rgba(35, 136, 255, 0.18);
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
     footer {
       margin-top: 60px;
       padding: 35px 0;
@@ -313,13 +372,19 @@
       }
 
       .grid,
+      .features-grid,
       .download-box,
-      .requirements {
+      .requirements,
+      .screenshots-grid {
         grid-template-columns: 1fr;
       }
 
       .hero {
         padding-top: 60px;
+      }
+
+      .buttons {
+        justify-content: center !important;
       }
     }
   </style>
@@ -330,13 +395,14 @@
   <header>
     <div class="container nav">
       <div class="brand">
-        <div class="logo">🐧</div>
+        <img class="logo-img" src="assets/mascote-linuxpert.png" alt="Mascote Linuxpert OS">
         <div>Linuxpert OS</div>
       </div>
 
       <nav class="nav-links">
         <a href="#download">Download</a>
         <a href="#requisitos">Requisitos</a>
+        <a href="#linuxpert-os">Linuxpert OS</a>
         <a href="#suporte">Suporte</a>
         <a href="https://www.linuxpert.com.br/" target="_blank">Site Oficial</a>
       </nav>
@@ -367,7 +433,7 @@
       </div>
     </section>
 
-    <section class="container grid">
+    <section class="container features-grid">
       <div class="card">
         <h3>Visual moderno</h3>
         <p>
@@ -471,6 +537,44 @@
               <li>Conexão com internet</li>
               <li>Backup dos arquivos antes da instalação</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section use-section" id="linuxpert-os">
+      <div class="container">
+        <div class="section-title">
+          <h2>Com o Linuxpert OS, você pode fazer mais</h2>
+          <p>
+            Tudo que você faz no Debian, você pode fazer no Linuxpert. Você pode usá-lo como sistema operacional diário,
+            ambiente de desenvolvimento, servidor ou ferramenta de aprendizado. A escolha é sua.
+          </p>
+        </div>
+
+        <div class="screenshots-grid">
+          <div class="screenshot-card">
+            <img src="assets/screenshot-1.png" alt="Linuxpert OS rodando vídeo e navegador">
+          </div>
+
+          <div class="screenshot-card">
+            <img src="assets/screenshot-2.png" alt="Linuxpert OS com biblioteca de jogos">
+          </div>
+
+          <div class="screenshot-card">
+            <img src="assets/screenshot-3.png" alt="Linuxpert OS para desenvolvimento">
+          </div>
+
+          <div class="screenshot-card">
+            <img src="assets/screenshot-4.png" alt="Linuxpert OS para produtividade">
+          </div>
+
+          <div class="screenshot-card">
+            <img src="assets/screenshot-5.png" alt="Linuxpert OS com terminal e ferramentas do sistema">
+          </div>
+
+          <div class="screenshot-card">
+            <img src="assets/screenshot-6.png" alt="Linuxpert OS para criação e Blender">
           </div>
         </div>
       </div>
