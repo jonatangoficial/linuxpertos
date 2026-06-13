@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download Linuxpert OS</title>
+
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1b33;
+      --card: #101f36;
+      --card-2: #132942;
+      --blue: #2388ff;
+      --blue-2: #4ca3ff;
+      --text: #f4f8ff;
+      --muted: #a9bdd6;
+      --border: rgba(255, 255, 255, 0.10);
+      --success: #36d399;
+      --warning: #facc15;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(35, 136, 255, 0.25), transparent 35%),
+        linear-gradient(180deg, var(--bg), #040914 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    header {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 17, 31, 0.75);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.3px;
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), #005fcc);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      box-shadow: 0 0 30px rgba(35, 136, 255, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--blue-2);
+      background: rgba(35, 136, 255, 0.08);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 22px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero h1 span {
+      color: var(--blue-2);
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 34px;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      padding: 15px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), #006de6);
+      color: white;
+      box-shadow: 0 12px 35px rgba(35, 136, 255, 0.30);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+    }
+
+    .info-line {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 40px 0;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), rgba(16, 31, 54, 0.72));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .section {
+      padding: 45px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .download-box {
+      background:
+        linear-gradient(135deg, rgba(35, 136, 255, 0.16), rgba(255, 255, 255, 0.04)),
+        var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .download-box h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .download-box p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .version-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .version-item {
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 16px;
+      color: var(--muted);
+    }
+
+    .version-item strong {
+      color: var(--text);
+    }
+
+    .requirements {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    li {
+      color: var(--muted);
+    }
+
+    li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .notice {
+      border: 1px solid rgba(250, 204, 21, 0.30);
+      background: rgba(250, 204, 21, 0.08);
+      color: #fff3b0;
+      padding: 18px;
+      border-radius: 18px;
+      margin-top: 20px;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 35px 0;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 850px) {
+      .nav {
+        flex-direction: column;
+      }
+
+      .grid,
+      .download-box,
+      .requirements {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">🐧</div>
+        <div>Linuxpert OS</div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#download">Download</a>
+        <a href="#requisitos">Requisitos</a>
+        <a href="#suporte">Suporte</a>
+        <a href="https://www.linuxpert.com.br/" target="_blank">Site Oficial</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container">
+        <div class="badge">Sistema Linux moderno, simples e pronto para uso</div>
+
+        <h1>Baixe o <span>Linuxpert OS</span></h1>
+
+        <p>
+          Uma distribuição Linux pensada para usuários que querem praticidade,
+          visual moderno, desempenho e uma experiência pronta para o dia a dia.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="#download">Baixar agora</a>
+          <a class="btn btn-secondary" href="https://www.linuxpert.com.br/" target="_blank">Conhecer o projeto</a>
+        </div>
+
+        <div class="info-line">
+          Versão atual: <strong>Linuxpert OS 1.0</strong> · Arquitetura: <strong>64-bit</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="container grid">
+      <div class="card">
+        <h3>Visual moderno</h3>
+        <p>
+          Interface elegante, organizada e preparada para entregar uma experiência bonita e prática.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Pronto para uso</h3>
+        <p>
+          Ideal para navegação, estudos, trabalho, criação de conteúdo e uso diário.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Base Linux</h3>
+        <p>
+          Sistema construído com foco em estabilidade, desempenho e facilidade para novos usuários.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="container">
+        <div class="download-box">
+          <div>
+            <h2>Download do Linuxpert OS</h2>
+            <p>
+              Baixe a imagem ISO oficial do Linuxpert OS e instale no seu computador,
+              notebook ou máquina virtual.
+            </p>
+
+            <div class="buttons" style="justify-content: flex-start;">
+              <a class="btn btn-primary" href="LINK-DA-ISO-AQUI" target="_blank">
+                Baixar ISO
+              </a>
+
+              <a class="btn btn-secondary" href="LINK-DO-SHA256-AQUI" target="_blank">
+                Verificar SHA256
+              </a>
+            </div>
+
+            <div class="notice">
+              Antes de instalar, recomendamos testar o sistema em modo Live USB
+              e fazer backup dos seus arquivos importantes.
+            </div>
+          </div>
+
+          <div class="version-list">
+            <div class="version-item">
+              <strong>Arquivo:</strong><br />
+              linuxpert-os-1.0-amd64.iso
+            </div>
+
+            <div class="version-item">
+              <strong>Arquitetura:</strong><br />
+              64-bit / amd64
+            </div>
+
+            <div class="version-item">
+              <strong>Status:</strong><br />
+              Versão oficial para download
+            </div>
+
+            <div class="version-item">
+              <strong>Formato:</strong><br />
+              ISO inicializável
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="requisitos">
+      <div class="container">
+        <div class="section-title">
+          <h2>Requisitos recomendados</h2>
+          <p>
+            Para uma experiência melhor, use o Linuxpert OS em computadores com estas configurações.
+          </p>
+        </div>
+
+        <div class="requirements">
+          <div class="card">
+            <h3>Requisitos mínimos</h3>
+            <ul>
+              <li>Processador 64-bit</li>
+              <li>4 GB de memória RAM</li>
+              <li>30 GB de espaço em disco</li>
+              <li>Placa de vídeo compatível com Linux</li>
+              <li>Pendrive de 8 GB ou maior para instalação</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Recomendado</h3>
+            <ul>
+              <li>Processador dual-core ou superior</li>
+              <li>8 GB de memória RAM ou mais</li>
+              <li>SSD com 60 GB ou mais</li>
+              <li>Conexão com internet</li>
+              <li>Backup dos arquivos antes da instalação</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="suporte">
+      <div class="container">
+        <div class="section-title">
+          <h2>Suporte e comunidade</h2>
+          <p>
+            Acompanhe novidades, tutoriais, atualizações e conteúdos sobre o Linuxpert OS.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Site oficial</h3>
+            <p>
+              Acesse artigos, novidades, downloads e informações oficiais do projeto.
+            </p>
+            <br />
+            <a class="btn btn-secondary" href="https://www.linuxpert.com.br/" target="_blank">
+              Acessar site
+            </a>
+          </div>
+
+          <div class="card">
+            <h3>YouTube</h3>
+            <p>
+              Veja vídeos, tutoriais, demonstrações e novidades do canal Linuxpert.
+            </p>
+            <br />
+            <a class="btn btn-secondary" href="https://youtube.com/channel/UCQn7aGarXKmLre37QuVN-3w/" target="_blank">
+              Acessar canal
+            </a>
+          </div>
+
+          <div class="card">
+            <h3>Comunidade</h3>
+            <p>
+              Entre na comunidade para acompanhar o projeto e receber ajuda.
+            </p>
+            <br />
+            <a class="btn btn-secondary" href="https://chat.whatsapp.com/JJgyuPqjNnwGPAN3EixTHN" target="_blank">
+              Entrar no grupo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        <strong>Linuxpert OS</strong> — criado por Jonatan Luiz Gouvea.
+      </p>
+      <p>
+        Linuxpert Apps · Linuxpert · Software livre, tecnologia e praticidade.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
